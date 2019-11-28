@@ -23,8 +23,8 @@ export default {
   doc: {
     public: './public',
     base: '/react-antd-sider-menus/',
-    title: 'react-antd-sider-menus',
+    title: 'ReactAntdSiderMenus',
     description:
-      'Based on the left side of the antd slide menu bar, solve the problem of refreshing the route, jump routing, Layout.Sider collapsed from false to true, and when the collapsed is true, the dropdown is mistaken for the bug.'
+      'Based on antd, menu props mode is inline. solve the problem of refreshing the route, jump routing, Layout.Sider collapsed from false to true, and when the collapsed is true, the dropdown is mistaken for the bug.'
   }
 }

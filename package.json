@@ -1,7 +1,7 @@
 {
   "name": "react-antd-sider-menus",
-  "version": "0.1.2",
-  "description": "Based on the left side of the antd slide menu bar, solve the problem of refreshing the route, jump routing, Layout.Sider collapsed from false to true, and when the collapsed is true, the dropdown is mistaken for the bug.",
+  "version": "0.1.0",
+  "description": "Based on antd, menu props mode is inline. solve the problem of refreshing the route, jump routing, Layout.Sider collapsed from false to true, and when the collapsed is true, the dropdown is mistaken for the bug.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "unpkg": "dist/index.umd.js",
@@ -15,7 +15,7 @@
     "build": "father build"
   },
   "lint-staged": {
-    "**/*.{jsx,js}": [
+    "*.js": [
       "prettier-eslint --write",
       "git add"
     ]
@@ -56,16 +56,20 @@
     "prettier": "^1.18.2",
     "prettier-eslint": "^9.0.0",
     "prettier-eslint-cli": "^5.0.0",
+    "rollup-plugin-commonjs": "^10.1.0"
+  },
+  "peerDependencies": {
+    "antd": ">=3.9.0",
+    "prop-types": ">=15.0.0",
+    "react": ">=16.8.0",
+    "react-router-dom": ">=5.0.0",
+    "umi-plugin-locale": ">=2.11.0"
+  },
+  "dependencies": {
+    "antd": "^3.25.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "rollup-plugin-commonjs": "^10.1.0",
     "umi-plugin-locale": "^2.11.3"
-  },
-  "peerDependencies": {
-    "antd": ">=3.9.0"
-  },
-  "dependencies": {
-    "antd": "^3.25.2"
   }
 }
