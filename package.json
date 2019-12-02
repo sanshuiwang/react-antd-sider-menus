@@ -1,6 +1,6 @@
 {
   "name": "react-antd-sider-menus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Based on antd, menu props mode is inline. solve the problem of refreshing the route, jump routing, Layout.Sider collapsed from false to true, and when the collapsed is true, the dropdown is mistaken for the bug.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
