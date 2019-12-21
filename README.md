@@ -40,20 +40,25 @@ OR
 ### ES2015
 
 ```javascript
-import ReactAntdSiderMenus from 'react-antd-sider-menus'
+import ReactAntdSiderMenus, {
+  toggleCollapsed,
+  childrenToFlat,
+  findPathByLeafParam
+} from 'react-antd-sider-menus'
 ```
 
 ### CommonJS
 
 ```javascript
 const ReactAntdSiderMenus = require('react-antd-sider-menus')
+const { toggleCollapsed, childrenToFlat, findPathByLeafParam } = require('react-antd-sider-menus')
 ```
 
 ## Usage
 
 ```javascript
 import React, { useReducer } from 'react'
-import ReactAntdSiderMenus from 'react-antd-sider-menus'
+import ReactAntdSiderMenus, { toggleCollapsed } from 'react-antd-sider-menus'
 
 const initial = {
   menus: [], // set self project menus
@@ -82,39 +87,55 @@ function Example() {
     dispatch
   ] = useReducer(reducer, initial)
 
-  const screenWidth = 1200 // listener screen resize
+  const screenWidth = 1200 // listener screen resize. recommend: react-listen-resize
   const siderMenusWidth = '320px'
-  const locationPathname = '' // listener browser router pathname change
+  const locationPathname = '' // listener browser router pathname change.
+
+  const onChangeSiderMenus = value =>
+    dispatch({
+      type: 'update',
+      payload: {
+        ...value
+      }
+    })
 
   return (
-    <ReactAntdSiderMenus
-      screenWidth={screenWidth}
-      locationPathname={locationPathname}
-      antdSider={{
-        classNameSider: '',
-        styleSider: { height: '100%', overflowX: 'hidden', overflowY: 'auto' },
-        widthSider: siderMenusWidth,
-        collapsedWidth: 64
-      }}
-      siderMenus={{
-        menus,
-        collapsed,
-        key,
-        keyPath,
-        cacheKeyPath,
-        breadRouters
-      }}
-      onChangeSiderMenus={value =>
-        dispatch({
-          type: 'update',
-          payload: {
-            ...value
-          }
-        })
-      }
-      firstLevelSubMenuIconStyle={{ style: {} }}
-      firstLevelMenuItemIconStyle={{ style: {} }}
-    />
+    <React.Fragment>
+      <div
+        onClick={() =>
+          toggleCollapsed({
+            onChangeSiderMenus,
+            collapsed,
+            keyPath,
+            cacheKeyPath,
+            breadRouters
+          })
+        }
+      >
+        Expand/Close
+      </div>
+      <ReactAntdSiderMenus
+        screenWidth={screenWidth}
+        locationPathname={locationPathname}
+        antdSider={{
+          classNameSider: '',
+          styleSider: { height: '100%', overflowX: 'hidden', overflowY: 'auto' },
+          widthSider: siderMenusWidth,
+          collapsedWidth: 64
+        }}
+        siderMenus={{
+          menus,
+          collapsed,
+          key,
+          keyPath,
+          cacheKeyPath,
+          breadRouters
+        }}
+        onChangeSiderMenus={onChangeSiderMenus}
+        firstLevelSubMenuIconStyle={{ style: {} }}
+        firstLevelMenuItemIconStyle={{ style: {} }}
+      />
+    </React.Fragment>
   )
 }
 ```
